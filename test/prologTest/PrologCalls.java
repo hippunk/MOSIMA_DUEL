@@ -1,8 +1,12 @@
 package prologTest;
 
+import java.util.Hashtable;
+import java.util.Map;
 import java.util.Random;
 
 import org.jpl7.Query;
+import org.jpl7.Term;
+import org.jpl7.Variable;
 
 public class PrologCalls {
 
@@ -55,6 +59,21 @@ public class PrologCalls {
 		System.out.println("**Test 4**");
 		query="caught(tom,maurice)";
 		System.out.println(query+" ?: "+Query.hasSolution(query));
+		
+		System.out.println("**Test 5**");
+	    Variable X = new Variable("X");
+		Term arg[] = { X };
+		Query    q = new Query("fish", arg);
+		q.open();
+		Map<String, Term> soln = q.getSolution();
+		for(Map.Entry<String, Term> entry : soln.entrySet()) {
+		    String key = entry.getKey();
+		    Term value = entry.getValue();
+		    System.out.println("Key : "+key+" value "+value);
+		}
+		q.close();
+		//System.out.println(query+" ?: "+Query.hasSolution(query));
+		
 		
 		System.out.println("passed");
 	}

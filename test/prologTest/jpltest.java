@@ -350,7 +350,8 @@ public class jpltest {
 		System.out.println("passed");
 	}
 
-	private static class QueryThread extends Thread {
+	private static
+	class QueryThread extends Thread {
 		private int id_ = -1;
 
 		public QueryThread(int id) {
@@ -380,6 +381,7 @@ public class jpltest {
 					while (query.hasMoreSolutions()) {
 						Thread.yield();
 						query.nextSolution();
+						
 					}
 				} catch (JPLException e) {
 					System.out.println("Threaded p(a, a) threw exception: " + e);
