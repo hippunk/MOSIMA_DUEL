@@ -26,6 +26,7 @@ import org.jpl7.Term;
 import org.jpl7.Util;
 import org.jpl7.Variable;
 
+
 /**
  * This class is used as a test to check the jpl installation
  *
@@ -50,6 +51,10 @@ public class jpltest {
 		test_10();
 		test_11();
 		test_101();
+		test_maurice();
+		
+		test_peche();
+
 	}
 
 	static void test_0() {
@@ -336,22 +341,94 @@ public class jpltest {
 		for (int i = 0; i < threads.length; ++i) {
 			threads[i].start();
 		}
-
 		for (int i = 0; i < threads.length; ++i) {
 			try {
 				threads[i].join();
-
 			} catch (InterruptedException ie) {
-				
 				ie.printStackTrace();
-				//System.exit(1);
+				// System.exit(1);
 			}
 		}
 		System.out.println("passed");
 	}
 
-	private static
-	class QueryThread extends Thread {
+	
+	
+	/////////////////////////////////////////////////////
+	static Term Maurice = new Atom("maurice");
+	static Term Tom = new Atom("tom");
+	static Term estPoisson = new Compound("fish", new Term[] { Maurice });
+	static Term estPecheur = new Compound("fisherman", new Term[] { Tom });
+	static void test_maurice(){
+		
+		System.out.print("charge fishing.pl");
+		//loading the file
+		String t0 = "consult('ressources/prolog/test/fishing.pl')";
+
+		//
+		if (!Query.hasSolution(t0)) {
+			System.out.println(t0 + " failed");
+			// System.exit(1);
+		}
+		System.out.println("passed");
+		
+		
+		String testMaurice = "fish(Maurice)";
+
+		System.out.println("test Maurice");
+		if (!Query.hasSolution(testMaurice)) {
+			System.out.println(testMaurice + " failed");
+			// System.exit(1);
+		}
+		System.out.println("passed");
+	
+		
+		
+		Query q = new Query(estPoisson);
+		
+		if (!q.hasSolution()){
+			System.out.println("pasok");
+		}
+		System.out.println("ok");
+		System.out.println("////////////////////////////////////");
+		System.out.println(q.toString());
+		System.out.println(q.hasSolution());
+		q.open();
+		System.out.println(q.getSolution());
+		System.out.println(q.nextSolution());
+		q.close();
+		//System.out.println(q.);
+
+
+
+		System.out.println("////////////////////////////////////");
+
+		Query q2 = new Query("fish", new Term[]{Maurice});
+		
+		if (!q2.hasSolution()){
+			System.out.println("pasok");
+		}
+		System.out.println("ok");
+		q2.open();
+		System.out.println(q2.getSolution());
+		
+	}
+	static void test_peche(){
+		Query q = new Query("caught", new Term[]{ Tom, Maurice});
+		System.out.println("Test Peche");
+
+		q.open();
+		System.out.println(q.toString());
+		//System.out.println(q.getSolution());
+		
+		
+	}
+
+	/////////////////////////////////////////////////////////////////
+	
+	
+	private static class QueryThread extends Thread {
+
 		private int id_ = -1;
 
 		public QueryThread(int id) {
@@ -363,17 +440,15 @@ public class jpltest {
 		}
 
 		public void run() {
-
 			Query query = new Query("p", new Term[] { new Atom("a"), new Atom("a") });
 			for (int i = 0; i < 10; ++i) {
 				try {
-					//System.out.println("\nLigne : "+query);
 					query.hasSolution();
 				} catch (JPLException e) {
 					System.out.println("Threaded p(a, a) threw exception: " + e);
 					System.exit(1);
 				}
-				//System.out.print(id_);
+				System.out.print(id_);
 				Thread.yield();
 			}
 			for (int i = 0; i < 10; ++i) {
@@ -387,7 +462,7 @@ public class jpltest {
 					System.out.println("Threaded p(a, a) threw exception: " + e);
 					System.exit(1);
 				}
-				//System.out.print(id_);
+				System.out.print(id_);
 			}
 		}
 	}
