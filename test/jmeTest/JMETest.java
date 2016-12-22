@@ -9,7 +9,7 @@ public class JMETest {
 
 		//Env.launch("flat_terrain");
 		//Env.launch("circleMap2");//"flat_terrain_64"
-		Env.launch("PerlinMap");
+		Env.launch("test");
 		//Env.launchRandom(256);
 
 	}
