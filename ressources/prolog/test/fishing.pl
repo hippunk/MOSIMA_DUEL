@@ -18,7 +18,7 @@ caught(X,Y) :-
 	fishing(X),
 	fish(Y),
 	free(Y),
-	jpl_call('prologTest.PrologCalls',hooked,[X,Y],R),
+	jpl_call('prolog.PrologCalls',hooked,[X,Y],R),
 	jpl_is_true(R).
 	
 	

@@ -37,6 +37,8 @@ public class Principal {
 
 		//3) launch agents
 		startAgents(agentList);
+		
+
 
 	}
 	
@@ -68,6 +70,8 @@ public class Principal {
 		createMonitoringAgents(mainContainerRef);
 
 		System.out.println("Plaform ok");
+		
+		
 		return rt;
 
 	}
