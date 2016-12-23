@@ -52,6 +52,7 @@ import env.terrain.TerrainTools;
 import sma.actionsBehaviours.LegalActions;
 import sma.actionsBehaviours.LegalActions.LegalAction;
 import sma.actionsBehaviours.LegalActions.Orientation;
+import utils.GreyToFileConverter;
 
 
 /**
@@ -122,6 +123,24 @@ public class Environment extends SimpleApplication {
 	 * @return the created environment
 	 */
 	public static Environment launch(String filename){
+		Environment env = new Environment(filename);
+		SimpleApplication app = env;
+		app.start();
+		return env;
+	}
+	
+	
+	/**
+	 * Launches the given image's heightmap.
+	 * -warning- the heightmap file must be a square power of two png greyscale file
+	 * A txt file from the image is created in the ressources folder 
+	 * 
+	 * @param filename name of the image.png containing the heightmap
+	 * @param divider for the grey values
+	 * @return the created environment
+	 */
+	public static Environment launchPngMap(String filename,int divider){
+		GreyToFileConverter.greyToFile(filename,divider);
 		Environment env = new Environment(filename);
 		SimpleApplication app = env;
 		app.start();
@@ -883,10 +902,13 @@ public class Environment extends SimpleApplication {
 			ray.setLimit(FIELDOFVIEW);
 			CollisionResults results = new CollisionResults();
 			shootables.collideWith(ray, results);
-			CollisionResult closest = results.getCollision(1);
-			
-			if (agentPosition.distance(enemyPosition)<=FIELDOFVIEW && closest.getGeometry().equals(players.get(enemy))) {
-				res.add(new Tuple2<Vector3f, String>(enemyPosition, enemy));
+			if (results.size()!=0){
+				CollisionResult closest = results.getCollision(1);
+				
+				if (agentPosition.distance(enemyPosition)<=FIELDOFVIEW && closest.getGeometry().equals(players.get(enemy))) {
+					res.add(new Tuple2<Vector3f, String>(enemyPosition, enemy));
+				}
+				
 			}
 		}
 		return res;

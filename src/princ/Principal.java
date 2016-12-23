@@ -28,7 +28,7 @@ public class Principal {
 		//0) Create the environment
 
 		//env = Environment.launchRandom(128);
-		env = Environment.launch("test");
+		env = Environment.launchPngMap("map2",5);
 		
 		emptyPlatform(containerList);
 

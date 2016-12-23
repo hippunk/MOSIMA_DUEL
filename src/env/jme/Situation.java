@@ -55,5 +55,13 @@ public class Situation {
 		this.consistency = consistency;
 		this.agents = agents;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Situation [fieldOfViewLimit=" + fieldOfViewLimit + ", direction=" + direction + ", lastAction="
+				+ lastAction + ", agentAltitude=" + agentAltitude + ", minAltitude=" + minAltitude + ", maxAltitude="
+				+ maxAltitude + ", avgAltitude=" + avgAltitude + ", fieldOfView=" + fieldOfView + ", maxDepth="
+				+ maxDepth + ", consistency=" + consistency + ", agents=" + agents + "]";
+	}
+		
 }

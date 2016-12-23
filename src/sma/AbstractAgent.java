@@ -37,10 +37,13 @@ public class AbstractAgent extends Agent implements EnvironmentManager {
 	}
 
 	public Situation observeAgents() {
-		return this.realEnv.observe(getLocalName(), 10);
+		Situation sit =  this.realEnv.observe(getLocalName(), 10);
+		System.out.println(sit);
+		return sit;
 	}
 	
 	public void lookAt(LegalAction direction) {
+		
 		this.realEnv.lookAt(getLocalName(), direction);
 	}
 
