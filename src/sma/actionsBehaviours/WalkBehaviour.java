@@ -5,6 +5,7 @@ import com.jme3.math.Vector3f;
 import env.jme.PlayerControl;
 import jade.core.behaviours.TickerBehaviour;
 import sma.AbstractAgent;
+import sma.actionsBehaviours.LegalActions.LegalAction;
 import sma.agents.BasicAgent;
 
 
@@ -23,6 +24,61 @@ public class WalkBehaviour extends TickerBehaviour {
 	@Override
 	protected void onTick() {
 		// TODO Auto-generated method stub
+		
+		Vector3f currentpos  =  ((AbstractAgent) this.myAgent).getCurrentPosition();
+		Vector3f dest = ((AbstractAgent) this.myAgent).getDestination();
+		( (BasicAgent) this.myAgent).majnbIterationBloque();
+		System.out.println("DESSSSSSST" + dest);
+		
+		
+		
+		if (dest==null || approximativeEqualsCoordinates(currentpos, dest) || (((BasicAgent)this.myAgent).getnbIterationBloque() >= 20)) {
+			String enemy = "";
+			if (this.myAgent.getLocalName().equals("Player1")) {
+				enemy = "Player2";
+			}
+			else {
+				enemy = "Player1";
+			}
+			/**
+			if ( approximativeEqualsCoordinates(currentpos, dest) || (((BasicAgent)this.myAgent).getnbIterationBloque() >= 20))
+			((BasicAgent)this.myAgent).setWatchAndChooseDirection(true);
+			else
+				((BasicAgent)this.myAgent).setWatchAndChooseDirection(false);
+**/
+			
+			if (((BasicAgent)this.myAgent).getWatchAndChooseDirection()){
+
+				((BasicAgent)this.myAgent).watchAndChooseDirection();
+				System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
+
+				}
+				else {
+					
+					
+					System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+					dest = ((BasicAgent)this.myAgent).getMaxAltitudeObservee();
+					//((AbstractAgent)this.myAgent).cardinalMove(   ((BasicAgent)this.myAgent).getChooseDirection() );
+					((AbstractAgent)this.myAgent).moveTo( dest);
+				}
+
+			//((AbstractAgent)this.myAgent).randomAction(enemy);
+
+			
+		}
+		
+		
+		
+		
+		System.out.println("/////////////////////" +  ((BasicAgent)this.myAgent).getMaxAltitudeObservee()  );
+		System.out.println("/////////////////////" +  ((BasicAgent)this.myAgent).getWatchAndChooseDirection()  );
+
+		//PrologCalls.main(null);
+		
+		
+		
+		
+/*     PARTIE POUR RANDOM MOVE
 		Vector3f currentpos  =  ((AbstractAgent) this.myAgent).getCurrentPosition();
 		Vector3f dest = ((AbstractAgent) this.myAgent).getDestination();
 		( (BasicAgent) this.myAgent).majnbIterationBloque();
@@ -44,7 +100,7 @@ public class WalkBehaviour extends TickerBehaviour {
 			//((AbstractAgent)(this.myAgent)).observeAgents();
 		}
 		//PrologCalls.main(null);
-
+*/
 		
 	}
 	

@@ -1,7 +1,5 @@
 package sma.agents;
 
-import org.graphstream.graph.*;
-import org.graphstream.graph.implementations.SingleGraph;
 
 import env.jme.Environment;
 import sma.AbstractAgent;
@@ -15,7 +13,6 @@ public class ThinkAgent extends AbstractAgent {
 	 */
 	private static final long serialVersionUID = 7469387968066432059L;
 	public boolean friendorFoe;
-	private Graph carte = new SingleGraph("Carte");
 	public ThinkBehaviour think;
 
 	

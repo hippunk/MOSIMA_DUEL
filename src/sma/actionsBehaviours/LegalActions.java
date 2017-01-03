@@ -69,4 +69,31 @@ public class LegalActions {
 		}
 		
 	}
+	
+	public static LegalAction LookToMove(LegalAction action){
+		switch(action){
+		case LOOKTO_NORTH :
+			return LegalAction.MOVE_NORTH;
+		case LOOKTO_NORTHEAST:
+			return LegalAction.MOVE_NORTHEAST;
+		case LOOKTO_EAST:
+			return LegalAction.MOVE_EAST;
+		case LOOKTO_SOUTHEAST:
+			return LegalAction.MOVE_SOUTHEAST;
+		case LOOKTO_SOUTH:
+			return LegalAction.MOVE_SOUTH;
+		case LOOKTO_SOUTHWEST:
+			return LegalAction.MOVE_SOUTHWEST;
+		case LOOKTO_WEST:
+			return LegalAction.MOVE_WEST;
+		case LOOKTO_NORTHWEST:
+			return LegalAction.MOVE_NORTHWEST;
+		default:
+			System.out.println("Error, no compatible action");
+		System.exit(-1);
+		return LegalAction.MOVE_NORTH;
+		}
+		
+	}
+	
 }
