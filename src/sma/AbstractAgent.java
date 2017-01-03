@@ -24,6 +24,9 @@ public class AbstractAgent extends Agent implements EnvironmentManager {
 	private Environment realEnv;
 	
 	
+	
+	
+	
 	public AbstractAgent() {
 		registerO2AInterface(EnvironmentManager.class, this);
 	}
@@ -98,4 +101,5 @@ public class AbstractAgent extends Agent implements EnvironmentManager {
 	protected void setup() {
 		super.setup();
 	}
+	
 }
