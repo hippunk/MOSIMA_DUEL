@@ -34,7 +34,7 @@ public class RandomWalkBehaviour extends TickerBehaviour {
 				enemy = "Player1";
 			}
 			((AbstractAgent)this.myAgent).randomAction(enemy);
-			//((AbstractAgent)(this.myAgent)).observeAgents();
+			((AbstractAgent)(this.myAgent)).observeAgents();
 		}
 		//PrologCalls.main(null);
 
