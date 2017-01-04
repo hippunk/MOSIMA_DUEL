@@ -86,7 +86,7 @@ public class PrologCalls {
 	
 		System.out.println("passed");
 		
-		System.out.println("/////////////////////////////////////////");
+		/*System.out.println("/////////////////////////////////////////");
 		
 		query = "consult('./ressources/prolog/test/regle.pl')";
 		System.out.println(query+" ?: "+Query.hasSolution(query));
@@ -110,7 +110,7 @@ public class PrologCalls {
 		
 		System.out.println("**Test 5**");
 		query="blesse(enemy)";
-		System.out.println(query+" ?: "+Query.hasSolution(query));
+		System.out.println(query+" ?: "+Query.hasSolution(query));*/
 		
 		
 	}

@@ -15,6 +15,10 @@ public class ThinkAgent extends AbstractAgent {
 	public boolean friendorFoe;
 	public ThinkBehaviour think;
 
+	public static boolean shoot( String x, String y){
+		return true;
+	}
+	
 	
 	protected void setup(){
 		super.setup();

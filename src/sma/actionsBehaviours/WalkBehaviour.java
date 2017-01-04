@@ -23,6 +23,7 @@ public class WalkBehaviour extends TickerBehaviour {
 
 	@Override
 	protected void onTick() {
+		((BasicAgent)this.myAgent).setSitu(((AbstractAgent) this.myAgent).observeAgents());
 		// TODO Auto-generated method stub
 		
 		Vector3f currentpos  =  ((AbstractAgent) this.myAgent).getCurrentPosition();

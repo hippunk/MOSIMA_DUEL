@@ -50,6 +50,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="ressources/lib/tools/sma-tools.jar"/>
 	<classpathentry kind="lib" path="ressources/lib/weka/weka-3-6-14/weka.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/swipl/lib/jpl.jar"/>
+	<classpathentry kind="lib" path="C:/swipl/lib/jpl.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

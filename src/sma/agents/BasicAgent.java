@@ -37,7 +37,17 @@ public class BasicAgent extends AbstractAgent {
 	private LegalAction chooseDirection = null;
 	
 	
-	// Pour randomWalk
+	public Situation getSitu() {
+		return situ;
+	}
+
+
+
+	public void setSitu(Situation situ) {
+		this.situ = situ;
+	}
+
+		// Pour randomWalk
 		private Vector3f positionPrecedente = null;
 		private int nbIterationBloque = 0;
 		
@@ -66,8 +76,8 @@ public class BasicAgent extends AbstractAgent {
 		randomWalk = new RandomWalkBehaviour(this);
 		walk = new WalkBehaviour(this);
 		
-		//addBehaviour(randomWalk);
-		addBehaviour(walk);
+		addBehaviour(randomWalk);
+		//addBehaviour(walk);
 		
 		System.out.println("the player "+this.getLocalName()+ " is started. Tag (0==enemy): " + friendorFoe);
 		
