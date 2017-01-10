@@ -20,7 +20,7 @@ public class ThinkBehaviour extends TickerBehaviour {
 	private int observeTimeout = 20;
 	private int observecpt = 0;
 	private ThinkAgent myagent; 
-	
+	private boolean computed = false;
 	
 	public ThinkBehaviour(final AbstractAgent a) {
 		super(a, 200);
@@ -48,7 +48,48 @@ public class ThinkBehaviour extends TickerBehaviour {
 	}
 	
 	private void computeDatas(){
-		
+		if (!computed){
+			computed = true;
+			float max = -10000000;
+			Orientation res = null;
+			for(Map.Entry<Orientation,Situation> entry : myagent.mapSitu.entrySet()) {
+			    Orientation key = entry.getKey();
+			    Situation value = entry.getValue();
+			    
+			    
+			    // Agent dans champ de vision
+			    if (!value.agents.isEmpty()){
+			    	if (myagent.getLocalName().equals("player1")){
+			    		PrologCallsThink.orientationPlayer = key;
+			    	}
+			    	else {
+			    		PrologCallsThink.orientationEnemy = key;
+			    	}
+			    }
+			    // Sinon, on prend l'altitude la plus haute
+			    else {
+			    	if (value.maxAltitude != null && max < value.maxAltitude.y){
+			    		res = key;
+			    		max = value.maxAltitude.y;
+			    	}
+			    	
+			    	
+			    }
+			    
+			}
+			if (res != null){
+				if (myagent.getLocalName().equals("player1")){
+		    		PrologCallsThink.orientationPlayer = res;
+		    		PrologCallsThink.enemyInView = true;
+		    	}
+		    	else {
+		    		PrologCallsThink.orientationEnemy = res;
+		    		PrologCallsThink.playerInView = true;
+		    	}		
+			}
+					
+			
+		}
 	}
 	
 	private synchronized void debugPrintMap(){
@@ -93,6 +134,7 @@ public class ThinkBehaviour extends TickerBehaviour {
 	private synchronized void dropMapSitu(){
 		System.out.println("Drop SituMap");
 		myagent.mapSitu.clear();
+		computed = false;
 		
 		//Drop dans la classe statique prolog pour le traitement des données
 		if(myagent.getLocalName().equals("Player1")){
@@ -117,4 +159,7 @@ public class ThinkBehaviour extends TickerBehaviour {
 		
 		return null;
 	}
+	
+	
+	
 }
