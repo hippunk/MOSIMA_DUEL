@@ -152,11 +152,11 @@ public class ThinkBehaviour extends TickerBehaviour {
 		//Drop dans la classe statique prolog pour le traitement des données
 		if(myagent.getLocalName().equals("Player1")){
 			PrologCallsThink.mapSituPlayer = null;
-			//PrologCallsThink.orientationPlayer = null;
+			PrologCallsThink.orientationPlayer = null;
 		}
 		if(myagent.getLocalName().equals("Player2")){
 			PrologCallsThink.mapSituEnemy = null;
-			//PrologCallsThink.orientationEnemy = null;
+			PrologCallsThink.orientationEnemy = null;
 		}
 	}
 
