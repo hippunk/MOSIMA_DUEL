@@ -55,7 +55,7 @@ public class AgentPrologDebug {
 		System.out.println("**Test 5**");
 	    Variable X = new Variable("X");
 		Term arg[] = { X };
-		Query    q = new Query("him",arg);
+		Query    q = new Query("me",arg);
 		
 		System.out.println("var : "+X+" q : "+q);
 		

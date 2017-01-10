@@ -30,6 +30,8 @@ public class BasicAgent extends AbstractAgent {
 	public RandomWalkBehaviour randomWalk;
 	public WalkBehaviour walk ;
 	
+	private Situation situ;
+	
 	// Pour watchRandomDirection
 	private ArrayList<LegalAction> watchRandomDirection = new ArrayList<LegalAction>() ; //9 à 16
 	private Vector3f maxAltitudeObservee = new Vector3f(0,-100000,0);
@@ -103,7 +105,7 @@ public class BasicAgent extends AbstractAgent {
 	
 	public void majnbIterationBloque(){
 
-		System.out.println(approximativeEqualsCoordinates(getCurrentPosition(), getPositionPrecedente()));
+		//System.out.println(approximativeEqualsCoordinates(getCurrentPosition(), getPositionPrecedente()));
 
 		if (approximativeEqualsCoordinates(getCurrentPosition(), getPositionPrecedente()) ){
 			nbIterationBloque ++;
@@ -113,9 +115,9 @@ public class BasicAgent extends AbstractAgent {
 			nbIterationBloque = 0;
 			setPositionPrecedente(null);
 		}
-		System.out.println(nbIterationBloque);
-		System.out.println(getPositionPrecedente());
-		System.out.println(getCurrentPosition());
+		//System.out.println(nbIterationBloque);
+		//System.out.println(getPositionPrecedente());
+		//System.out.println(getCurrentPosition());
 		
 		setPositionPrecedente(getCurrentPosition().clone());
 

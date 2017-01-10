@@ -736,7 +736,7 @@ public class Environment extends SimpleApplication {
 	    ray.setLimit(FIELDOFVIEW);
 	    shootables.collideWith(ray, res);
 	    
-	    if (res.size() > 0) {
+	    if (res.size() > 1) {
 	    	int size = 0;
 		    while (res.size() >= size && res.getCollision(size).getClass().equals(Geometry.class) ) {
 		    	size++;

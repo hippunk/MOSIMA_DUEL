@@ -40,6 +40,37 @@ public class LegalActions {
 	
 	
 	/**
+	 * Returns the Looking LegalAction of a Orientation LegalAction, with the same direction.
+	 * @param action the Moving LegalAction.
+	 * @return the Looking LegalAction.
+	 */
+	public static LegalAction OrientationToLook(Orientation orientation){
+		switch(orientation){
+		case LOOKTO_NORTH :
+			return LegalAction.LOOKTO_NORTH;
+		case LOOKTO_NORTHEAST:
+			return LegalAction.LOOKTO_NORTHEAST;
+		case LOOKTO_EAST:
+			return LegalAction.LOOKTO_EAST;
+		case LOOKTO_SOUTHEAST:
+			return LegalAction.LOOKTO_SOUTHEAST;
+		case LOOKTO_SOUTH:
+			return LegalAction.LOOKTO_SOUTH;
+		case LOOKTO_SOUTHWEST:
+			return LegalAction.LOOKTO_SOUTHWEST;
+		case LOOKTO_WEST:
+			return LegalAction.LOOKTO_WEST;
+		case LOOKTO_NORTHWEST:
+			return LegalAction.LOOKTO_NORTHWEST;
+		default:
+			System.out.println("Error, no compatible action");
+		System.exit(-1);
+		return LegalAction.LOOKTO_NORTH;
+		}
+		
+	}
+	
+	/**
 	 * Returns the Looking LegalAction of a Moving LegalAction, with the same direction.
 	 * @param action the Moving LegalAction.
 	 * @return the Looking LegalAction.
