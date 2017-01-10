@@ -25,6 +25,10 @@ public class ThinkBehaviour extends TickerBehaviour {
 	public ThinkBehaviour(final AbstractAgent a) {
 		super(a, 200);
 		myagent = (ThinkAgent)a;
+		if (myagent.getLocalName().equals("Player1"))
+			PrologCallsThink.player = myagent;
+		else
+			PrologCallsThink.enemy = myagent;
 		
 	}
 	@Override
@@ -59,7 +63,7 @@ public class ThinkBehaviour extends TickerBehaviour {
 			    
 			    // Agent dans champ de vision
 			    if (!value.agents.isEmpty()){
-			    	if (myagent.getLocalName().equals("player1")){
+			    	if (myagent.getLocalName().equals("Player1")){
 			    		PrologCallsThink.orientationPlayer = key;
 			    	}
 			    	else {
@@ -79,7 +83,7 @@ public class ThinkBehaviour extends TickerBehaviour {
 			    
 			}
 			if (res != null){
-				if (myagent.getLocalName().equals("player1")){
+				if (myagent.getLocalName().equals("Player1")){
 		    		PrologCallsThink.orientationPlayer = res;
 		    		PrologCallsThink.enemyInView = true;
 		    	}
@@ -115,6 +119,9 @@ public class ThinkBehaviour extends TickerBehaviour {
 				myagent.mapSitu.put(key, myagent.observeAgents());
 			}catch (Exception e){}
 		}
+		else {
+			computeDatas();
+		}
 	}
 	
 	private synchronized void checkObserveTimeout(){
@@ -140,9 +147,11 @@ public class ThinkBehaviour extends TickerBehaviour {
 		//Drop dans la classe statique prolog pour le traitement des données
 		if(myagent.getLocalName().equals("Player1")){
 			PrologCallsThink.mapSituPlayer = null;
+			//PrologCallsThink.orientationPlayer = null;
 		}
 		if(myagent.getLocalName().equals("Player2")){
 			PrologCallsThink.mapSituEnemy = null;
+			//PrologCallsThink.orientationEnemy = null;
 		}
 	}
 

@@ -76,7 +76,7 @@ public class PrologCallsThink {
 	}
 			
 	public static void computeProlog(String nom){
-		if(mapSituEnemy != null && mapSituPlayer != null && player != null && enemy != null){
+		if(orientationEnemy != null && orientationPlayer != null && player != null && enemy != null){
 			
 			//loading the pl file
 			String plFile = "consult('ressources/prolog/test/pltest.pl')";
@@ -95,7 +95,12 @@ public class PrologCallsThink {
 			
 		}else{
 			System.out.println("il manque des données pour le prolog");
+			
 		}
+		System.out.println("orientationEnemy : " + orientationEnemy
+				+"\norientationPlayer : "+orientationPlayer
+				+"\nplayer : "+player
+				+"\nenemy : "+enemy);
 		
 	}
 	
