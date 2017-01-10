@@ -7,6 +7,8 @@ import org.jpl7.Query;
 import org.jpl7.Term;
 import org.jpl7.Variable;
 
+import com.jme3.math.Vector3f;
+
 import sma.actionsBehaviours.LegalActions;
 import env.jme.Situation;
 import jade.core.Agent;
@@ -25,6 +27,8 @@ public class PrologCallsThink {
 	public static Orientation orientationEnemy = null;
 	public static boolean playerInView = false;
 	public static boolean enemyInView = false;
+	public static Vector3f playerDestination = null;
+	public static Vector3f enemyDestination = null;
 	
 	/***
 	 * Prologs functions

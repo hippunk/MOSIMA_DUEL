@@ -3,6 +3,8 @@ package sma.actionsBehaviours;
 import java.util.Map;
 import java.util.Set;
 
+import com.jme3.math.Vector3f;
+
 import env.jme.Situation;
 import jade.core.behaviours.TickerBehaviour;
 import prolog.PrologCallsThink;
@@ -56,7 +58,8 @@ public class ThinkBehaviour extends TickerBehaviour {
 			Orientation res = null;
     		PrologCallsThink.enemyInView = false;
     		PrologCallsThink.playerInView = false;
-    		
+		    Vector3f dest = null;
+
     		if (myagent.getLocalName().equals("Player1")){
 	    		PrologCallsThink.orientationPlayer = null;
 	    	}
@@ -68,17 +71,17 @@ public class ThinkBehaviour extends TickerBehaviour {
 			    Orientation key = entry.getKey();
 			    Situation value = entry.getValue();
 			    
-			    
 			    // Agent dans champ de vision
 			    if (!value.agents.isEmpty()){
 			    	if (myagent.getLocalName().equals("Player1")){
 			    		PrologCallsThink.orientationPlayer = key;
 			    		PrologCallsThink.enemyInView = true;
-
+			    		PrologCallsThink.playerDestination = value.agents.get(0).getFirst();
 			    	}
 			    	else {
 			    		PrologCallsThink.orientationEnemy = key;
 			    		PrologCallsThink.playerInView = true;
+			    		PrologCallsThink.enemyDestination = value.agents.get(0).getFirst();
 
 			    	}
 			    	break;
@@ -88,6 +91,7 @@ public class ThinkBehaviour extends TickerBehaviour {
 			    	if (value.maxAltitude != null && max < value.maxAltitude.y){
 			    		res = key;
 			    		max = value.maxAltitude.y;
+			    		dest = value.maxAltitude;
 			    	}
 			    	
 			    	
@@ -97,9 +101,13 @@ public class ThinkBehaviour extends TickerBehaviour {
 			if (res != null){
 				if (myagent.getLocalName().equals("Player1")){
 		    		PrologCallsThink.orientationPlayer = res;
+		    		PrologCallsThink.playerDestination = dest;
+		    		
 		    	}
 		    	else {
 		    		PrologCallsThink.orientationEnemy = res;
+		    		PrologCallsThink.enemyDestination = dest;
+
 		    	}		
 			}
 					
