@@ -40,6 +40,8 @@ public class ThinkBehaviour extends TickerBehaviour {
 		//Print debug
 		//debugPrintMap();
 		
+		//Si fillMapSitu plein : charger le Prolog Static
+		
 		//Compute : Avec le prolog :)
 		PrologCallsThink.computeProlog(myagent.getLocalName());
 		
@@ -91,6 +93,14 @@ public class ThinkBehaviour extends TickerBehaviour {
 	private synchronized void dropMapSitu(){
 		System.out.println("Drop SituMap");
 		myagent.mapSitu.clear();
+		
+		//Drop dans la classe statique prolog pour le traitement des données
+		if(myagent.getLocalName().equals("Player1")){
+			PrologCallsThink.mapSituPlayer = null;
+		}
+		if(myagent.getLocalName().equals("Player2")){
+			PrologCallsThink.mapSituEnemy = null;
+		}
 	}
 
 	/***

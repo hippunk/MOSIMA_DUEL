@@ -2,6 +2,11 @@ package prolog;
 
 import java.util.Map;
 
+import org.jpl7.Atom;
+import org.jpl7.Query;
+import org.jpl7.Term;
+import org.jpl7.Variable;
+
 import env.jme.Situation;
 import jade.core.Agent;
 import sma.AbstractAgent;
@@ -57,7 +62,36 @@ public class PrologCallsThink {
 	
 	public static void computeProlog(String nom){
 		if(mapSituEnemy != null && mapSituPlayer != null && player != null && enemy != null){
-			//Ouverture du fichier et computage du prolog.
+			
+			//loading the pl file
+			String plFile = "consult('ressources/prolog/test/pltest.pl')";
+			if (!Query.hasSolution(plFile)) {
+				System.out.println(plFile + " failed loading pl file");
+				System.exit(1);
+			}
+			//System.out.println("passed");
+			
+			//System.out.println("**Test 5**");
+		    Atom atom = new Atom(nom);
+			Term arg[] = { atom };
+			Query    q = new Query("think",arg);
+			
+			//System.out.println("var : "+atom+" q : "+q);
+			
+			/*if(q.hasSolution()){
+				q.open();
+				Map<String, Term> soln = q.getSolution();
+				for(Map.Entry<String, Term> entry : soln.entrySet()) {
+				    String key = entry.getKey();
+				    Term value = entry.getValue();
+				    System.out.println("Key : "+key+" value "+value);
+				}
+			}
+			else
+				System.out.println("false");
+			 */
+			
+			q.close();
 			
 		}else{
 			System.out.println("il manque des données pour le prolog");
