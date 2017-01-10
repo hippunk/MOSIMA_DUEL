@@ -56,7 +56,14 @@ public class ThinkBehaviour extends TickerBehaviour {
 			Orientation res = null;
     		PrologCallsThink.enemyInView = false;
     		PrologCallsThink.playerInView = false;
-
+    		
+    		if (myagent.getLocalName().equals("Player1")){
+	    		PrologCallsThink.orientationPlayer = null;
+	    	}
+	    	else {
+	    		PrologCallsThink.orientationEnemy = null;
+	    	}	
+    		
 			for(Map.Entry<Orientation,Situation> entry : myagent.mapSitu.entrySet()) {
 			    Orientation key = entry.getKey();
 			    Situation value = entry.getValue();
@@ -150,11 +157,11 @@ public class ThinkBehaviour extends TickerBehaviour {
 		//Drop dans la classe statique prolog pour le traitement des données
 		if(myagent.getLocalName().equals("Player1")){
 			PrologCallsThink.mapSituPlayer = null;
-			PrologCallsThink.orientationPlayer = null;
+			//PrologCallsThink.orientationPlayer = null;
 		}
 		if(myagent.getLocalName().equals("Player2")){
 			PrologCallsThink.mapSituEnemy = null;
-			PrologCallsThink.orientationEnemy = null;
+			//PrologCallsThink.orientationEnemy = null;
 		}
 	}
 
