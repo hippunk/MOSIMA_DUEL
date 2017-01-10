@@ -56,6 +56,9 @@ public class ThinkBehaviour extends TickerBehaviour {
 			computed = true;
 			float max = -10000000;
 			Orientation res = null;
+    		PrologCallsThink.enemyInView = false;
+    		PrologCallsThink.playerInView = false;
+
 			for(Map.Entry<Orientation,Situation> entry : myagent.mapSitu.entrySet()) {
 			    Orientation key = entry.getKey();
 			    Situation value = entry.getValue();
@@ -65,9 +68,13 @@ public class ThinkBehaviour extends TickerBehaviour {
 			    if (!value.agents.isEmpty()){
 			    	if (myagent.getLocalName().equals("Player1")){
 			    		PrologCallsThink.orientationPlayer = key;
+			    		PrologCallsThink.enemyInView = true;
+
 			    	}
 			    	else {
 			    		PrologCallsThink.orientationEnemy = key;
+			    		PrologCallsThink.playerInView = true;
+
 			    	}
 			    	break;
 			    }
@@ -85,11 +92,9 @@ public class ThinkBehaviour extends TickerBehaviour {
 			if (res != null){
 				if (myagent.getLocalName().equals("Player1")){
 		    		PrologCallsThink.orientationPlayer = res;
-		    		PrologCallsThink.enemyInView = true;
 		    	}
 		    	else {
 		    		PrologCallsThink.orientationEnemy = res;
-		    		PrologCallsThink.playerInView = true;
 		    	}		
 			}
 					
