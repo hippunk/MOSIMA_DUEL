@@ -33,7 +33,7 @@ public class AgentPrologDebug {
 		
 	}
 	
-	public static boolean hunt(String x,String y, String z){
+	public static boolean shoot(String x,){
 		
 	}
 	

@@ -1,38 +1,33 @@
 
 
-think():-
-	me(X),
-	him(Y),
-	view(X,Y,Z,W),
-	move(Z),
-	check(Y,Z,W),
-	hunt(Y).
+think(X):-
+	view(X),
+	move(X),
+	check(X),
+	hunt(X).	
 	
-test(player).
-	
-isme(X):-
-	test(X).
-	
-me(R):-
-	jpl_call('prologTest.AgentPrologDebug',me,[],R),
-	jpl_call('prologTest.AgentPrologDebug',test,[],T),
-	isme(R).
+%me(R):-
+%	jpl_call('prologTest.AgentPrologDebug',me,[],R),
+%	jpl_call('prologTest.AgentPrologDebug',test,[],T),
+%	isme(R).
 
-him(R):-
-	jpl_call('prologTest.AgentPrologDebug',him,[],R),
-	isme(R),
-	jpl_call('prologTest.AgentPrologDebug',test,[],T).
+%him(R):-
+%	jpl_call('prologTest.AgentPrologDebug',him,[],R),
+%	isme(R),
+%	jpl_call('prologTest.AgentPrologDebug',test,[],T).
 	
+check(X):-
+	jpl_call('prolog.PrologCallsThink',check,[X],R),
+	jpl_is_true(R).
 	
-%check(Y,Z,W):-
-%	Y \= W,
-%	jpl_call...
+move(X):-
+	jpl_call('prolog.PrologCallsThink',move,[X],R),
+	jpl_is_true(R).
 	
-%move(Z):-
-%	jpl_call...
+view(X):-
+	jpl_call('prolog.PrologCallsThink',view,[X],R),
+	jpl_is_true(R).
 	
-%view(X,Y,Z,W):-
-%	jpl_call... []
-	
-%hunt(Y):-
-%	jpl_call...
+hunt(X):-
+	jpl_call('prolog.PrologCallsThink',hunt,[X],R),
+	jpl_is_true(R).

@@ -21,30 +21,11 @@ public class ThinkBehaviour extends TickerBehaviour {
 	private ThinkAgent myagent; 
 	
 	
-	/***
-	 * Prologs functions
-	 * */
-	
-	//Debug me/him for testing
-	public static String me(){
-		return "player";
-	}
-	
-	public static String him(){
-		return "enemy";
-	}
-		
-	/*******************************************/
-	
-	
 	public ThinkBehaviour(final AbstractAgent a) {
 		super(a, 200);
 		myagent = (ThinkAgent)a;
 		
 	}
-
-
-
 	@Override
 	protected void onTick() { /*Utilisation d'un graphe pour mémoriser des positions ?!*/
 		// TODO Auto-generated method stub
