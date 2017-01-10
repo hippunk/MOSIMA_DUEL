@@ -31,6 +31,7 @@ public class PrologCallsThink {
 	 * */
 		
 	public static boolean check(String nom){//Vérifier si ennemi à protée
+		System.out.println("Dans Check");
 		boolean result = false;
 		if(nom.equals("Player1") && enemyInView){
 			result = true;
@@ -42,11 +43,13 @@ public class PrologCallsThink {
 	}
 	
 	public static boolean view(String nom){ //Si besoin ?, vérification du remplissage des tables de Situation
-		boolean result = false;
+		System.out.println("Dans view");
+		boolean result = true;
 		return result;
 	}
 	
 	public static boolean shoot(String nom){//Tir
+		System.out.println("Dans shoot");
 		boolean result = true;
 		
 		if(nom.equals("Player1")){
@@ -61,6 +64,7 @@ public class PrologCallsThink {
 	}
 	
 	public static boolean move(String nom){ //Déplacement vers le point le plus haut observé
+		System.out.println("Dans Move");
 		boolean result = false;
 		
 		if(nom.equals("Player1")){
@@ -77,7 +81,7 @@ public class PrologCallsThink {
 			
 	public static void computeProlog(String nom){
 		if(orientationEnemy != null && orientationPlayer != null && player != null && enemy != null){
-			
+			System.out.println("Dans compute");
 			//loading the pl file
 			String plFile = "consult('ressources/prolog/test/pltest.pl')";
 			if (!Query.hasSolution(plFile)) {
@@ -89,9 +93,9 @@ public class PrologCallsThink {
 		    Atom atom = new Atom(nom);
 			Term arg[] = { atom };
 			Query    q = new Query("think",arg);
+			q.hasSolution();
 			
-			
-			q.close();
+			//q.close();
 			
 		}else{
 			System.out.println("il manque des données pour le prolog");

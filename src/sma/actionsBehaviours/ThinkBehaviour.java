@@ -43,9 +43,7 @@ public class ThinkBehaviour extends TickerBehaviour {
 		
 		//Print debug
 		//debugPrintMap();
-		
-		//Si fillMapSitu plein : charger le Prolog Static
-		
+				
 		//Compute : Avec le prolog :)
 		PrologCallsThink.computeProlog(myagent.getLocalName());
 		
