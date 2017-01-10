@@ -79,8 +79,11 @@ public class PrologCallsThink {
 			}
 			result = true;	
 		}else if(nom.equals("Player2")){
-			enemy.cardinalMove(LegalActions.LookToMove(LegalActions.OrientationToLook(orientationEnemy)));
-			result = true;
+			Vector3f currentpos  = player.getCurrentPosition();
+			Vector3f dest = player.getDestination();
+			if (dest==null || approximativeEqualsCoordinates(currentpos, dest)){
+				enemy.cardinalMove(LegalActions.LookToMove(LegalActions.OrientationToLook(orientationEnemy)));
+			}result = true;
 		}
 		
 		return result;
