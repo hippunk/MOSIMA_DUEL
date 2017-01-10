@@ -65,6 +65,7 @@ public class ThinkBehaviour extends TickerBehaviour {
 			    	else {
 			    		PrologCallsThink.orientationEnemy = key;
 			    	}
+			    	break;
 			    }
 			    // Sinon, on prend l'altitude la plus haute
 			    else {
