@@ -34,7 +34,7 @@ public class PrologCallsThink {
 	 * Prologs functions
 	 * */
 		
-	public static boolean check(String nom){//Vérifier si ennemi à protée
+	public synchronized static boolean check(String nom){//Vérifier si ennemi à protée
 		System.out.println("Dans Check");
 		boolean result = false;
 		if(nom.equals("Player1") && enemyInView){
@@ -46,13 +46,13 @@ public class PrologCallsThink {
 		return result;
 	}
 	
-	public static boolean view(String nom){ //Si besoin ?, vérification du remplissage des tables de Situation
+	public synchronized static boolean view(String nom){ //Si besoin ?, vérification du remplissage des tables de Situation
 		System.out.println("Dans view");
 		boolean result = true;
 		return result;
 	}
 	
-	public static boolean shoot(String nom){//Tir
+	public synchronized static boolean shoot(String nom){//Tir
 		System.out.println("Dans shoot");
 		boolean result = true;
 		
@@ -67,7 +67,7 @@ public class PrologCallsThink {
 		return result;
 	}
 	
-	public static boolean move(String nom){ //Déplacement vers le point le plus haut observé
+	public synchronized static boolean move(String nom){ //Déplacement vers le point le plus haut observé
 		System.out.println("Dans Move : "+nom);
 		boolean result = false;
 
@@ -89,13 +89,13 @@ public class PrologCallsThink {
 		return result;
 	}
 	
-	private static boolean approximativeEqualsCoordinates(Vector3f a, Vector3f b) {
+	private synchronized static boolean approximativeEqualsCoordinates(Vector3f a, Vector3f b) {
 		return approximativeEquals(a.x, b.x) && approximativeEquals(a.z, b.z);
 	}
-	private static boolean approximativeEquals(float a, float b) {
+	private synchronized static boolean approximativeEquals(float a, float b) {
 		return b-2.5 <= a && a <= b+2.5;
 	}
-	public static void computeProlog(String nom){
+	public synchronized static void computeProlog(String nom){
 		if(orientationEnemy != null && orientationPlayer != null && player != null && enemy != null){
 			System.out.println("Dans compute");
 			//loading the pl file

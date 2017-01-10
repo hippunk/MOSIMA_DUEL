@@ -1,6 +1,7 @@
 
 
 think(X):-
+	check(X),
 	move(X).
 	
 %check(X),
