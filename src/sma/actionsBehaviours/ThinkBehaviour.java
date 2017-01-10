@@ -5,6 +5,7 @@ import java.util.Set;
 
 import env.jme.Situation;
 import jade.core.behaviours.TickerBehaviour;
+import prolog.PrologCallsThink;
 import sma.AbstractAgent;
 import sma.actionsBehaviours.LegalActions.LegalAction;
 import sma.actionsBehaviours.LegalActions.Orientation;
@@ -40,7 +41,7 @@ public class ThinkBehaviour extends TickerBehaviour {
 		//debugPrintMap();
 		
 		//Compute : Avec le prolog :)
-		
+		PrologCallsThink.computeProlog(myagent.getLocalName());
 		
 	}
 	

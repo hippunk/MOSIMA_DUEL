@@ -15,6 +15,10 @@ public class PrologCallsThink {
 	public static ThinkAgent enemy = null;
 	public static Map<Orientation,Situation> mapSituPlayer = null;
 	public static Map<Orientation,Situation> mapSituEnemy = null;
+	public static Orientation orientationPlayer = null;
+	public static Orientation orientationEnemy = null;
+	public static boolean playerInView = false;
+	public static boolean enemyInView = false;
 	
 	/***
 	 * Prologs functions
