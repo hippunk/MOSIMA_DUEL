@@ -53,6 +53,7 @@ public class ThinkBehaviour extends TickerBehaviour {
 	
 	private void computeDatas(){
 		if (!computed){
+
 			computed = true;
 			float max = -10000000;
 			Orientation res = null;

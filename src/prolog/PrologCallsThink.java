@@ -68,13 +68,16 @@ public class PrologCallsThink {
 	}
 	
 	public static boolean move(String nom){ //Déplacement vers le point le plus haut observé
-		System.out.println("Dans Move");
+		System.out.println("Dans Move : "+nom);
 		boolean result = false;
-		
+
 		if(nom.equals("Player1")){
-			player.cardinalMove(LegalActions.LookToMove(LegalActions.OrientationToLook(orientationPlayer)));
-			result = true;
-					
+			Vector3f currentpos  = player.getCurrentPosition();
+			Vector3f dest = player.getDestination();
+			if (dest==null || approximativeEqualsCoordinates(currentpos, dest)){
+				player.cardinalMove(LegalActions.LookToMove(LegalActions.OrientationToLook(orientationPlayer)));
+			}
+			result = true;	
 		}else if(nom.equals("Player2")){
 			enemy.cardinalMove(LegalActions.LookToMove(LegalActions.OrientationToLook(orientationEnemy)));
 			result = true;
@@ -82,7 +85,13 @@ public class PrologCallsThink {
 		
 		return result;
 	}
-			
+	
+	private static boolean approximativeEqualsCoordinates(Vector3f a, Vector3f b) {
+		return approximativeEquals(a.x, b.x) && approximativeEquals(a.z, b.z);
+	}
+	private static boolean approximativeEquals(float a, float b) {
+		return b-2.5 <= a && a <= b+2.5;
+	}
 	public static void computeProlog(String nom){
 		if(orientationEnemy != null && orientationPlayer != null && player != null && enemy != null){
 			System.out.println("Dans compute");

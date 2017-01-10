@@ -1,10 +1,10 @@
 
 
 think(X):-
-	view(X),
-	move(X),
-	check(X),
-	hunt(X).	
+	move(X).
+	
+%check(X),
+%hunt(X).	
 	
 %me(R):-
 %	jpl_call('prologTest.AgentPrologDebug',me,[],R),
