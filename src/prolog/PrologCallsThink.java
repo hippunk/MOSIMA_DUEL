@@ -7,6 +7,7 @@ import org.jpl7.Query;
 import org.jpl7.Term;
 import org.jpl7.Variable;
 
+import sma.actionsBehaviours.LegalActions;
 import env.jme.Situation;
 import jade.core.Agent;
 import sma.AbstractAgent;
@@ -28,38 +29,52 @@ public class PrologCallsThink {
 	/***
 	 * Prologs functions
 	 * */
-	
-	//Debug me/him for testing
-	public static String me(){
-		return "player";
-	}
-	
-	public static String him(){
-		return "enemy";
-	}
-	
+		
 	public static boolean check(String nom){//Vérifier si ennemi à protée
-		boolean result = true;
+		boolean result = false;
+		if(nom.equals("Player1") && enemyInView){
+			result = true;
+					
+		}else if(nom.equals("Player2") && playerInView){
+			result = true;
+		}
 		return result;
 	}
 	
 	public static boolean view(String nom){ //Si besoin ?, vérification du remplissage des tables de Situation
-		boolean result = true;
+		boolean result = false;
 		return result;
 	}
 	
 	public static boolean shoot(String nom){//Tir
 		boolean result = true;
+		
+		if(nom.equals("Player1")){
+			player.shoot(enemy.getLocalName());
+			result = true;
+					
+		}else if(nom.equals("Player2")){
+			enemy.shoot(player.getLocalName());
+			result = true;
+		}
 		return result;
 	}
 	
 	public static boolean move(String nom){ //Déplacement vers le point le plus haut observé
-		boolean result = true;
+		boolean result = false;
+		
+		if(nom.equals("Player1")){
+			player.cardinalMove(LegalActions.LookToMove(LegalActions.OrientationToLook(orientationPlayer)));
+			result = true;
+					
+		}else if(nom.equals("Player2")){
+			enemy.cardinalMove(LegalActions.LookToMove(LegalActions.OrientationToLook(orientationEnemy)));
+			result = true;
+		}
+		
 		return result;
 	}
-		
-	/*******************************************/
-	
+			
 	public static void computeProlog(String nom){
 		if(mapSituEnemy != null && mapSituPlayer != null && player != null && enemy != null){
 			
@@ -69,27 +84,12 @@ public class PrologCallsThink {
 				System.out.println(plFile + " failed loading pl file");
 				System.exit(1);
 			}
-			//System.out.println("passed");
-			
-			//System.out.println("**Test 5**");
+
+			//Passge du nom de l'agent en paramètre prolog puis triatement du think
 		    Atom atom = new Atom(nom);
 			Term arg[] = { atom };
 			Query    q = new Query("think",arg);
 			
-			//System.out.println("var : "+atom+" q : "+q);
-			
-			/*if(q.hasSolution()){
-				q.open();
-				Map<String, Term> soln = q.getSolution();
-				for(Map.Entry<String, Term> entry : soln.entrySet()) {
-				    String key = entry.getKey();
-				    Term value = entry.getValue();
-				    System.out.println("Key : "+key+" value "+value);
-				}
-			}
-			else
-				System.out.println("false");
-			 */
 			
 			q.close();
 			
@@ -98,6 +98,8 @@ public class PrologCallsThink {
 		}
 		
 	}
-
+	
+	/*******************************************/
+	
 	
 }
