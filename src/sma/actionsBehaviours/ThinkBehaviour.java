@@ -19,7 +19,7 @@ public class ThinkBehaviour extends TickerBehaviour {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int observeTimeout = 20;
+	private int observeTimeout = 60;
 	private int observecpt = 0;
 	private ThinkAgent myagent; 
 	private boolean computed = false;
@@ -32,7 +32,7 @@ public class ThinkBehaviour extends TickerBehaviour {
 		else
 			PrologCallsThink.enemy = myagent;
 		
-		myagent.stopMove();
+		//myagent.stopMove();
 		
 	}
 	@Override
@@ -55,13 +55,14 @@ public class ThinkBehaviour extends TickerBehaviour {
 	
 	private void computeDatas(){
 		if (!computed){
-
+			System.out.println("Compute");
 			computed = true;
 			float max = -10000000;
 			Orientation res = null;
     		PrologCallsThink.enemyInView = false;
     		PrologCallsThink.playerInView = false;
 		    Vector3f dest = null;
+		    boolean stop = false;
 
     		if (myagent.getLocalName().equals("Player1")){
 	    		PrologCallsThink.orientationPlayer = null;
@@ -75,7 +76,7 @@ public class ThinkBehaviour extends TickerBehaviour {
 			    Situation value = entry.getValue();
 			    
 			    // Agent dans champ de vision
-			    if (!value.agents.isEmpty()){
+			    if (!value.agents.isEmpty() && !stop){
 			    	if (myagent.getLocalName().equals("Player1")){
 			    		PrologCallsThink.orientationPlayer = key;
 			    		PrologCallsThink.enemyInView = true;
@@ -87,10 +88,10 @@ public class ThinkBehaviour extends TickerBehaviour {
 			    		PrologCallsThink.enemyDestination = value.agents.get(0).getFirst();
 
 			    	}
-			    	break;
+			    	stop = true;
 			    }
 			    // Sinon, on prend l'altitude la plus haute
-			    else {
+			    else if(!stop){
 			    	if (value.maxAltitude != null && max < value.maxAltitude.y){
 			    		res = key;
 			    		max = value.maxAltitude.y;
@@ -102,6 +103,7 @@ public class ThinkBehaviour extends TickerBehaviour {
 			    
 			}
 			if (res != null){
+				myagent.lookAt(LegalActions.OrientationToLook(res));
 				if (myagent.getLocalName().equals("Player1")){
 		    		PrologCallsThink.orientationPlayer = res;
 		    		PrologCallsThink.playerDestination = dest;
@@ -163,6 +165,7 @@ public class ThinkBehaviour extends TickerBehaviour {
 	private synchronized void dropMapSitu(){
 		System.out.println("Drop SituMap");
 		myagent.mapSitu.clear();
+		myagent.stopMove();
 		computed = false;
 		
 		//Drop dans la classe statique prolog pour le traitement des données

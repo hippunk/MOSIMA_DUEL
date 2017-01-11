@@ -1,21 +1,8 @@
 
 
 think(X):-
-	check(X),
+	view(X),
 	move(X).
-	
-%check(X),
-%hunt(X).	
-	
-%me(R):-
-%	jpl_call('prologTest.AgentPrologDebug',me,[],R),
-%	jpl_call('prologTest.AgentPrologDebug',test,[],T),
-%	isme(R).
-
-%him(R):-
-%	jpl_call('prologTest.AgentPrologDebug',him,[],R),
-%	isme(R),
-%	jpl_call('prologTest.AgentPrologDebug',test,[],T).
 	
 check(X):-
 	jpl_call('prolog.PrologCallsThink',check,[X],R),

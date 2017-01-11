@@ -72,18 +72,16 @@ public class PrologCallsThink {
 		boolean result = false;
 
 		if(nom.equals("Player1")){
-			Vector3f currentpos  = player.getCurrentPosition();
-			Vector3f dest = player.getDestination();
-			if (dest==null || approximativeEqualsCoordinates(currentpos, dest)){
-				player.moveTo(playerDestination);
-			}
+			player.cardinalMove(LegalActions.LookToMove(LegalActions.OrientationToLook(orientationPlayer)));
 			result = true;	
 		}else if(nom.equals("Player2")){
-			Vector3f currentpos  = player.getCurrentPosition();
+			/*Vector3f currentpos  = player.getCurrentPosition();
 			Vector3f dest = player.getDestination();
 			if (dest==null || approximativeEqualsCoordinates(currentpos, dest)){
 				enemy.moveTo(enemyDestination);
-			}result = true;
+			}*/
+			player.cardinalMove(LegalActions.LookToMove(LegalActions.OrientationToLook(orientationEnemy)));
+			result = true;
 		}
 		
 		return result;
