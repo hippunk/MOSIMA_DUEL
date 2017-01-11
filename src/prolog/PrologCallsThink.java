@@ -57,12 +57,12 @@ public class PrologCallsThink {
 		boolean result = true;
 		
 		if(nom.equals("Player1")){
-			//player.shoot(enemy.getLocalName());
-			//result = true;
+			player.shoot(enemy.getLocalName());
+			result = true;
 					
 		}else if(nom.equals("Player2")){
-			//enemy.shoot(player.getLocalName());
-			//result = true;
+			enemy.shoot(player.getLocalName());
+			result = true;
 		}
 		return result;
 	}
