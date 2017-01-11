@@ -72,7 +72,8 @@ public class PrologCallsThink {
 		boolean result = false;
 
 		if(nom.equals("Player1")){
-			player.cardinalMove(LegalActions.LookToMove(LegalActions.OrientationToLook(orientationPlayer)));
+			//player.cardinalMove(LegalActions.LookToMove(LegalActions.OrientationToLook(orientationPlayer)));
+			player.moveTo(playerDestination);
 			result = true;	
 		}else if(nom.equals("Player2")){
 			/*Vector3f currentpos  = player.getCurrentPosition();
@@ -80,7 +81,8 @@ public class PrologCallsThink {
 			if (dest==null || approximativeEqualsCoordinates(currentpos, dest)){
 				enemy.moveTo(enemyDestination);
 			}*/
-			player.cardinalMove(LegalActions.LookToMove(LegalActions.OrientationToLook(orientationEnemy)));
+			//player.cardinalMove(LegalActions.LookToMove(LegalActions.OrientationToLook(orientationEnemy)));
+			player.moveTo(enemyDestination);
 			result = true;
 		}
 		
@@ -94,7 +96,8 @@ public class PrologCallsThink {
 		return b-2.5 <= a && a <= b+2.5;
 	}
 	public synchronized static void computeProlog(String nom){
-		if(orientationEnemy != null && orientationPlayer != null && player != null && enemy != null){
+		//if(orientationEnemy != null && orientationPlayer != null && player != null && enemy != null){
+		if (orientationPlayer != null && player != null){	
 			System.out.println("Dans compute");
 			//loading the pl file
 			String plFile = "consult('ressources/prolog/test/pltest.pl')";

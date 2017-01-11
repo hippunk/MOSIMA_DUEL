@@ -39,6 +39,17 @@ public class ThinkBehaviour extends TickerBehaviour {
 	protected void onTick() { /*Utilisation d'un graphe pour mémoriser des positions ?!*/
 		// TODO Auto-generated method stub
 		
+		
+		if(myagent.getLocalName().equals("Player1") && getTickCount() > 100 && approximativeEqualsCoordinates( PrologCallsThink.playerDestination,  PrologCallsThink.player.getCurrentPosition()) ){
+			myagent.stopMove();
+
+		
+		}
+		if(myagent.getLocalName().equals("Player2") && getTickCount() > 100 && approximativeEqualsCoordinates( PrologCallsThink.enemyDestination,  PrologCallsThink.enemy.getCurrentPosition()) ){
+			myagent.stopMove();
+
+		
+		}
 		//Si timeout atteint clear map
 		checkObserveTimeout();
 		
@@ -194,6 +205,12 @@ public class ThinkBehaviour extends TickerBehaviour {
 		return null;
 	}
 	
+	private boolean approximativeEqualsCoordinates(Vector3f a, Vector3f b) {
+		return approximativeEquals(a.x, b.x) && approximativeEquals(a.z, b.z);
+	}
 	
+	private boolean approximativeEquals(float a, float b) {
+		return b-5 <= a && a <= b+5;
+	}
 	
 }
