@@ -54,6 +54,10 @@ public class AbstractAgent extends Agent implements EnvironmentManager {
 		return this.realEnv.moveTo(getLocalName(), myDestination);
 	}
 	
+	public boolean stopMove(){
+		return this.realEnv.stopMove(getLocalName());
+	}
+	
 	public boolean cardinalMove(LegalAction direction) {
 		return this.realEnv.cardinalMove(getLocalName(), direction);
 	}

@@ -516,6 +516,18 @@ public class Environment extends SimpleApplication {
 		return false;
 	}
 	
+	public synchronized boolean stopMove(String agent){
+		if (players.containsKey(agent)) {
+			Spatial player = players.get(agent);
+			player.getControl(PlayerControl.class).stopMove();
+			return true;
+		}
+		else {
+//			System.out.println("arrived");
+			return false;
+		}
+	}
+	
 	
 	/**
 	 * -Local use only-

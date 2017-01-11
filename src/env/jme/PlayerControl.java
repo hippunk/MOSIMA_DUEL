@@ -100,6 +100,11 @@ public class PlayerControl extends CharacterControl{
 		}
 	}
 	
+	public void stopMove(){
+		this.ismoving = false;
+		this.destination = null;
+	}
+	
 	private boolean equalsCoordinates(float a, float b) {
 		return b-2.5 <= a && a <= b+2.5;
 	}

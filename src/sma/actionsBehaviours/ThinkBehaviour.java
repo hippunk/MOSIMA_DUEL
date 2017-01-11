@@ -32,6 +32,8 @@ public class ThinkBehaviour extends TickerBehaviour {
 		else
 			PrologCallsThink.enemy = myagent;
 		
+		myagent.stopMove();
+		
 	}
 	@Override
 	protected void onTick() { /*Utilisation d'un graphe pour mémoriser des positions ?!*/
