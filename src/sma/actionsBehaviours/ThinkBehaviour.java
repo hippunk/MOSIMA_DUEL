@@ -19,7 +19,7 @@ public class ThinkBehaviour extends TickerBehaviour {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int observeTimeout = 60;
+	private int observeTimeout = 20;
 	private int observecpt = 0;
 	private ThinkAgent myagent; 
 	private boolean computed = false;
@@ -40,16 +40,18 @@ public class ThinkBehaviour extends TickerBehaviour {
 		// TODO Auto-generated method stub
 		
 		
-		if(myagent.getLocalName().equals("Player1") && getTickCount() > 100 && approximativeEqualsCoordinates( PrologCallsThink.playerDestination,  PrologCallsThink.player.getCurrentPosition()) ){
-			myagent.stopMove();
+		//if(myagent.getLocalName().equals("Player1") && getTickCount() > 100 && approximativeEqualsCoordinates( PrologCallsThink.playerDestination,  PrologCallsThink.player.getCurrentPosition()) ){
+		//	myagent.stopMove();
 
 		
-		}
-		if(myagent.getLocalName().equals("Player2") && getTickCount() > 100 && approximativeEqualsCoordinates( PrologCallsThink.enemyDestination,  PrologCallsThink.enemy.getCurrentPosition()) ){
-			myagent.stopMove();
+		//}
+		//if(myagent.getLocalName().equals("Player2") && getTickCount() > 100 && approximativeEqualsCoordinates( PrologCallsThink.enemyDestination,  PrologCallsThink.enemy.getCurrentPosition()) ){
+		//	myagent.stopMove();
 
 		
-		}
+		//}
+		
+		
 		//Si timeout atteint clear map
 		checkObserveTimeout();
 		

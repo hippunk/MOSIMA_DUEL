@@ -9,6 +9,7 @@ import com.jme3.math.Vector3f;
 
 import env.jme.Environment;
 import env.jme.Situation;
+import prolog.PrologCallsThink;
 import sma.AbstractAgent;
 import sma.actionsBehaviours.RandomWalkBehaviour;
 import sma.actionsBehaviours.WalkBehaviour;
@@ -68,6 +69,7 @@ public class BasicAgent extends AbstractAgent {
 				deployAgent((Environment) args[0]);
 			} else {
 				deployEnemy((Environment) args[0]);
+				PrologCallsThink.enemy = this;
 			}
 			
 		}else{

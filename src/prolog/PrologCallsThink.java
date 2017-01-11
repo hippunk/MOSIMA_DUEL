@@ -20,7 +20,7 @@ public class PrologCallsThink {
 	
 	public static String nomActif = null;
 	public static ThinkAgent player = null;
-	public static ThinkAgent enemy = null;
+	public static AbstractAgent enemy = null;
 	public static Map<Orientation,Situation> mapSituPlayer = null;
 	public static Map<Orientation,Situation> mapSituEnemy = null;
 	public static Orientation orientationPlayer = null;
@@ -57,12 +57,12 @@ public class PrologCallsThink {
 		boolean result = true;
 		
 		if(nom.equals("Player1")){
-			player.shoot(enemy.getLocalName());
-			result = true;
+			//player.shoot(enemy.getLocalName());
+			//result = true;
 					
 		}else if(nom.equals("Player2")){
-			enemy.shoot(player.getLocalName());
-			result = true;
+			//enemy.shoot(player.getLocalName());
+			//result = true;
 		}
 		return result;
 	}

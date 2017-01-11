@@ -641,8 +641,9 @@ public class Environment extends SimpleApplication {
 	 * @return true if the shooting has succeeded, false if the enemy doesn't exist or if the shooting has failed.
 	 */
 	public boolean shoot(String agent, String enemy) {
+		System.out.println("Dans shoot env !!");
 		if (players.containsKey(agent) && players.containsKey(enemy)) {
-
+			System.out.println("Dans shoot env !! après condition");
 			Vector3f origin = getCurrentPosition(agent);
 			Vector3f target = getCurrentPosition(enemy);
 			Vector3f dir = target.subtract(origin).normalize();

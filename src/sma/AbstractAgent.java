@@ -67,6 +67,7 @@ public class AbstractAgent extends Agent implements EnvironmentManager {
 	}
 
 	public boolean shoot(String target) {
+		System.out.println("Dans shoot Abstract");
 		return this.realEnv.shoot(getLocalName(), target);
 	}
 	
