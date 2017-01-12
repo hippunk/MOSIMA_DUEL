@@ -102,6 +102,7 @@ public class ThinkBehaviour extends TickerBehaviour {
 
 			    	}
 			    	stop = true;
+			    	res = null;
 			    }
 			    // Sinon, on prend l'altitude la plus haute
 			    else if(!stop){
