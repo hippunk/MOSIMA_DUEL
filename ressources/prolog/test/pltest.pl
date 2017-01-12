@@ -1,5 +1,3 @@
-
-
 think(X):-
 	view(X),
 	move(X),
